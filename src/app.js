@@ -8,3 +8,6 @@ app({
   modules: { Router },
   view: (state, actions) => RouterView(state, actions)
 })
+
+// Subscriptions
+hyperapp.Router.init()

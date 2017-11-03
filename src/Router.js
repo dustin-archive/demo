@@ -16,11 +16,11 @@ const Router = {
     },
     route (state, _, { path, query }) {
       window.location.hash = (path || state.path) + encode(query || state.query)
+    },
+    init (_, { update }) {
+      update()
+      window.onhashchange = _ => update()
     }
-  },
-  init (_, { update }) {
-    update()
-    window.onhashchange = _ => update()
   }
 }
 
