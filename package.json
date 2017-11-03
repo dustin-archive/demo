@@ -20,8 +20,8 @@
     "hyperapp-persist": "^3.1.0"
   },
   "devDependencies": {
-    "@jamen/reload-server": "^0.8.0",
-    "@jamen/watch-exec": "^0.1.0",
+    "@jamen/reload-server": "^0.9.0",
+    "@jamen/watch-exec": "^0.2.0",
     "autoprefixer": "^7.1.6",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
