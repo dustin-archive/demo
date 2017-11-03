@@ -6,7 +6,7 @@ const Router = {
     path: '/'
   },
   actions: {
-    init () {
+    update () {
       const { hash } = window.location
       const index = hash.indexOf('?')
       return {
@@ -18,9 +18,9 @@ const Router = {
       window.location.hash = (path || state.path) + encode(query || state.query)
     }
   },
-  init (_, { init }) {
-    init()
-    window.onhashchange = _ => init()
+  init (_, { update }) {
+    update()
+    window.onhashchange = _ => update()
   }
 }
 
