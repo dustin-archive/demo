@@ -10,6 +10,7 @@ const Nav = _ =>
     Link('#/404', 'not found'),
     Link('#/about', 'about'),
     Link('#/catalog', 'catalog'),
+    Link('#/compare', 'compare'),
     Link('#/contact', 'contact'),
     Link('#/dashboard', 'dashboard'),
     Link('#/foobar', 'foobar'),

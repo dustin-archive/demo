@@ -14,6 +14,10 @@ const Catalog = h('div', null, [
   h('div', null, 'catalog')
 ])
 
+const Compare = h('div', null, [
+  h('div', null, 'compare')
+])
+
 const Contact = h('div', null, [
   h('div', null, 'contact')
 ])
@@ -46,6 +50,7 @@ const Router = state => ({
   '': Home,
   '/about': About,
   '/catalog': Catalog,
+  '/compare': Compare,
   '/contact': Contact,
   '/dashboard': Dashboard,
   '/inventory': Inventory,
