@@ -16,6 +16,7 @@ const Nav = (state, actions) =>
     NavLink('#/catalog', 'catalog'),
     NavLink('#/contact', 'contact'),
     NavLink('#/dashboard', 'dashboard'),
+    NavLink('#/foobar', 'foobar'),
     NavLink('#/inventory', 'inventory'),
     NavLink('#/post', 'post'),
     NavLink('#/profile', 'profile'),
