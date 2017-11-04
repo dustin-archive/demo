@@ -2,20 +2,27 @@
 
 import { h, app } from 'hyperapp'
 
-import { Router } from './Router'
-import { RouterView } from './RouterView'
+import { OverlayStore } from './modules/OverlayStore'
+import { RouterStore } from './modules/RouterStore'
 
+import { Code } from './views/Code'
+import { Router } from './views/Router'
 import { Nav } from './views/Nav'
 
 const hyperapp = app({
-  modules: { Router },
+  modules: {
+    OverlayStore,
+    RouterStore
+  },
   view: (state, actions) =>
     h('div', null, [
       Nav(),
-      RouterView(state),
-      h('div', null, JSON.stringify(state))
+      Router(state),
+      h('br', null, null),
+      Code(JSON.stringify(state, null, '  '))
     ])
 })
 
 // Subscriptions
-hyperapp.Router.init()
+hyperapp.OverlayStore.init()
+hyperapp.RouterStore.init()
