@@ -1,5 +1,7 @@
 import { h } from 'hyperapp'
 
+import { Post } from './views/Post'
+
 const Home = h('div', null, [
   h('div', null, 'home')
 ])
@@ -24,10 +26,6 @@ const Inventory = h('div', null, [
   h('div', null, 'inventory')
 ])
 
-const Post = h('div', null, [
-  h('div', null, 'post')
-])
-
 const Profile = h('div', null, [
   h('div', null, 'profile')
 ])
@@ -44,7 +42,7 @@ const NotFound = h('div', null, [
   h('div', null, '404')
 ])
 
-const RouterView = (state, actions) => ({
+const RouterView = state => ({
   '': Home,
   '/about': About,
   '/catalog': Catalog,
