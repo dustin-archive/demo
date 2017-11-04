@@ -4,31 +4,23 @@ import { h, app } from 'hyperapp'
 import { Router } from './Router'
 import { RouterView } from './RouterView'
 
+const NavLink = (href, value) => h('li', null, [
+  h('a', { href }, value)
+])
+
 const Nav = (state, actions) =>
   h('ul', null, [
-    h('li', null, [
-      h('a', { href: '#/about' }, 'about')
-    ]),
-    h('li', null, [
-      h('a', { href: '#/contact' }, 'contact')
-    ]),
-    h('li', null, [
-      h('a', { href: '#/dashboard' }, 'dashboard'),
-      h('ul', null, [
-        h('li', null, [
-          h('a', { href: '#/dashboard' }, 'dashboard profile')
-        ]),
-        h('li', null, [
-          h('a', { href: '#/dashboard' }, 'dashboard listings')
-        ]),
-        h('li', null, [
-          h('a', { href: '#/dashboard' }, 'dashboard settings')
-        ])
-      ])
-    ]),
-    h('li', null, [
-      h('a', { href: '#/404' }, 'not found')
-    ])
+    NavLink('#/', 'home'),
+    NavLink('#/404', 'not found'),
+    NavLink('#/about', 'about'),
+    NavLink('#/catalog', 'catalog'),
+    NavLink('#/contact', 'contact'),
+    NavLink('#/dashboard', 'dashboard'),
+    NavLink('#/inventory', 'inventory'),
+    NavLink('#/post', 'post'),
+    NavLink('#/profile', 'profile'),
+    NavLink('#/settings', 'settings'),
+    NavLink('#/update', 'update')
   ])
 
 const hyperapp = app({
