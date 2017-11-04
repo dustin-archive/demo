@@ -28,6 +28,7 @@ const hyperapp = app({
   modules: { Router },
   view: (state, actions) =>
     h('div', null, [
+      h('div', null, JSON.stringify(state)),
       Nav(state, actions),
       h('br'),
       RouterView(state, actions)
