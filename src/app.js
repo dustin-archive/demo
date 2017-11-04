@@ -10,6 +10,22 @@ import { Drop } from './views/Drop'
 import { Router } from './views/Router'
 import { Nav } from './views/Nav'
 
+const Drops = (state, actions) =>
+  h('div', null, [
+    Drop(state, actions, 'foo', [
+      h('div', null, 'foo')
+    ]),
+    Drop(state, actions, 'bar', [
+      h('div', null, 'bar')
+    ]),
+    Drop(state, actions, 'baz', [
+      h('div', null, 'baz')
+    ]),
+    Drop(state, actions, 'qux', [
+      h('div', null, 'qux')
+    ])
+  ])
+
 const hyperapp = app({
   modules: {
     OverlayStore,
@@ -20,15 +36,7 @@ const hyperapp = app({
       Nav(),
       Router(state),
       h('br', null, null),
-      Drop('foo', [
-        h('div', null, 'foo')
-      ]),
-      Drop('bar', [
-        h('div', null, 'bar')
-      ]),
-      Drop('baz', [
-        h('div', null, 'baz')
-      ]),
+      Drops(state, actions),
       h('br', null, null),
       Code(JSON.stringify(state, null, '  '))
     ])
@@ -36,5 +44,3 @@ const hyperapp = app({
 
 hyperapp.OverlayStore.init()
 hyperapp.RouterStore.init()
-
-export default hyperapp
