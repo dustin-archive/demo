@@ -23,7 +23,7 @@ clean:
 	mkdir dist
 
 js:
-	env $(cat .env) rollup src/app.js -o dist/app.js -f iife -m -c --silent
+	env $(cat .env) rollup src/app.js -o dist/app.js -f iife -m -c
 
 css:
-	node-sass src/app.scss -o dist -q --source-map true
+	node-sass src/app.scss -o dist --source-map true
