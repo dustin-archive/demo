@@ -10,7 +10,7 @@ const NavLink = (href, value) => h('li', null, [
 
 const Nav = (state, actions) =>
   h('ul', null, [
-    NavLink('#/', 'home'),
+    NavLink('#', 'home'),
     NavLink('#/404', 'not found'),
     NavLink('#/about', 'about'),
     NavLink('#/catalog', 'catalog'),
