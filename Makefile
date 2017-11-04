@@ -8,7 +8,7 @@ SHELL := /bin/bash
 
 start: fresh
 	reload-server start &
-	watch-exec src/**/*.js 'make js', src/**/*.scss 'make css' | reload-server &
+	watch-exec 'src/**/*.js' 'make js', 'src/**/*.scss' 'make css' | reload-server &
 	wait
 
 build: fresh
