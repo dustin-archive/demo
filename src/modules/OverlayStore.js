@@ -5,15 +5,15 @@ const OverlayStore = {
     overlay: null
   },
   actions: {
-    init () {
-      addEventListener('click', e => {
-        if (!e.target.classList.contains('_overlay')) {
-          return { overlay: null }
-        }
-      })
+    init (_, { reset }) {
+      addEventListener('click', e =>
+        !e.target.classList.contains('_overlay') && reset())
     },
-    toggle: ({ overlay }, _, name) => ({
-      overlay: overlay === name ? null : name
+    reset: _ => ({
+      overlay: null
+    }),
+    toggle: ({ overlay }, _, data) => ({
+      overlay: overlay === data ? null : data
     })
   }
 }
