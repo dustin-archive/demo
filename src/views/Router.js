@@ -1,6 +1,6 @@
 import { h } from 'hyperapp'
 
-import { Post } from './views/Post'
+import { Post } from './Post'
 
 const Home = h('div', null, [
   h('div', null, 'home')
@@ -42,7 +42,7 @@ const NotFound = h('div', null, [
   h('div', null, '404')
 ])
 
-const RouterView = state => ({
+const Router = state => ({
   '': Home,
   '/about': About,
   '/catalog': Catalog,
@@ -53,6 +53,6 @@ const RouterView = state => ({
   '/profile': Profile,
   '/settings': Settings,
   '/update': Update
-})[state.Router.path] || NotFound
+})[state.RouterStore.path] || NotFound
 
-export { RouterView }
+export { Router }

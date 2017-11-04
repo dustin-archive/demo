@@ -1,6 +1,8 @@
 import { encode, decode } from '@whaaaley/query-string'
 
-const Router = {
+const { addEventListener } = window
+
+const RouterStore = {
   state: {
     query: {},
     path: '/'
@@ -8,7 +10,7 @@ const Router = {
   actions: {
     init (_, { update }) {
       update()
-      window.onhashchange = _ => update()
+      addEventListener('hashchange', _ => update())
     },
     route (state, _, { path, query }) {
       window.location.hash = (path || state.path) + encode(query || state.query)
@@ -24,4 +26,4 @@ const Router = {
   }
 }
 
-export { Router }
+export { RouterStore }
