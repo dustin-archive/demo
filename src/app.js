@@ -2,45 +2,49 @@
 
 import { h, app } from 'hyperapp'
 
-import { OverlayStore } from './modules/OverlayStore'
-import { RouterStore } from './modules/RouterStore'
+import { OverlayModule } from './modules/OverlayModule'
+import { RouterModule } from './modules/RouterModule'
 
 import { Code } from './views/Code'
 import { Drop } from './views/Drop'
-import { Router } from './views/Router'
 import { Nav } from './views/Nav'
-
-const Drops = (state, actions) =>
-  h('div', null, [
-    Drop(state, actions, 'foo', [
-      h('div', null, 'foo')
-    ]),
-    Drop(state, actions, 'bar', [
-      h('div', null, 'bar')
-    ]),
-    Drop(state, actions, 'baz', [
-      h('div', null, 'baz')
-    ]),
-    Drop(state, actions, 'qux', [
-      h('div', null, 'qux')
-    ])
-  ])
+import { Router } from './views/Router'
+import { Search } from './views/Search'
 
 const hyperapp = app({
   modules: {
-    OverlayStore,
-    RouterStore
+    OverlayModule,
+    RouterModule
+  },
+  actions: {
+    Code,
+    Drop,
+    Nav,
+    Router,
+    Search
   },
   view: (state, actions) =>
     h('div', null, [
-      Nav(),
-      Router(state),
+      actions.Search(),
+      actions.Nav(),
+      actions.Router(),
       h('br', null, null),
-      Drops(state, actions),
+      actions.Drop('foo')(
+        h('div', null, 'foo')
+      ),
+      actions.Drop('bar')(
+        h('div', null, 'bar')
+      ),
+      actions.Drop('baz')(
+        h('div', null, 'baz')
+      ),
+      actions.Drop('qux')(
+        h('div', null, 'qux')
+      ),
       h('br', null, null),
-      Code(JSON.stringify(state, null, '  '))
+      actions.Code(state)
     ])
 })
 
-hyperapp.OverlayStore.init()
-hyperapp.RouterStore.init()
+hyperapp.OverlayModule.init()
+hyperapp.RouterModule.init()

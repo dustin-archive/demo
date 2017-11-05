@@ -1,5 +1,4 @@
 import { h } from 'hyperapp'
-
 import { Post } from './Post'
 
 const Home = h('div', null, [
@@ -46,7 +45,7 @@ const NotFound = h('div', null, [
   h('div', null, '404')
 ])
 
-const Router = state => ({
+const Router = (state, actions, data) => _ => ({
   '': Home,
   '/about': About,
   '/catalog': Catalog,
@@ -58,6 +57,6 @@ const Router = state => ({
   '/profile': Profile,
   '/settings': Settings,
   '/update': Update
-})[state.RouterStore.path] || NotFound
+})[state.RouterModule.path] || NotFound
 
 export { Router }

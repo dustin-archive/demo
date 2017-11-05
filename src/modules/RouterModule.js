@@ -2,7 +2,7 @@ import { encode, decode } from '@whaaaley/query-string'
 
 const { addEventListener } = window
 
-const RouterStore = {
+const RouterModule = {
   state: {
     query: {},
     path: '/'
@@ -26,4 +26,4 @@ const RouterStore = {
   }
 }
 
-export { RouterStore }
+export { RouterModule }

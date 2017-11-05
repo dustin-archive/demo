@@ -1,18 +1,18 @@
 import { h } from 'hyperapp'
 
-const Drop = (state, actions, data, children) =>
+const Drop = (state, actions, data) => _ => children =>
   h('div', {
     class: 'drop _overlay'
   }, [
     h('button', {
       onclick (e) {
         e.stopPropagation()
-        actions.OverlayStore.toggle(data)
+        actions.OverlayModule.toggle(data)
       }
     }, data),
     h('div', {
       class: 'drop-region',
-      style: state.OverlayStore.overlay !== data && {
+      style: state.OverlayModule.overlay !== data && {
         display: 'none'
       }
     }, children)

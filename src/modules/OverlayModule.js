@@ -1,6 +1,6 @@
 const { addEventListener } = window
 
-const OverlayStore = {
+const OverlayModule = {
   state: {
     overlay: null
   },
@@ -18,4 +18,4 @@ const OverlayStore = {
   }
 }
 
-export { OverlayStore }
+export { OverlayModule }
