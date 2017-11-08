@@ -8,5 +8,5 @@ export default ({ stores, views, init }) => {
     actions[a] = stores[a]
   }
 
-  init()
+  init(state, actions)
 }
