@@ -1,4 +1,4 @@
-export default ({ stores, views }) => {
+export default ({ stores, views, init }) => {
   const state = {}
   const actions = {}
 
@@ -7,4 +7,6 @@ export default ({ stores, views }) => {
     state[s] = stores[s]
     actions[a] = stores[a]
   }
+
+  init()
 }
