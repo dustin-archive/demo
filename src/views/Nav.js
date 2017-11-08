@@ -1,4 +1,4 @@
-import { h } from 'hyperapp'
+import { h } from '../h'
 
 const Link = (href, value) => h('li', null, [
   h('a', { href }, value)

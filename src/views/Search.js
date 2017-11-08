@@ -1,4 +1,4 @@
-import { h } from 'hyperapp'
+import { h } from '../h'
 
 const Search = (state, actions, data) => _ =>
   h('input', {

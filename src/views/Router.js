@@ -1,4 +1,4 @@
-import { h } from 'hyperapp'
+import { h } from '../h'
 import { Post } from './Post'
 
 const Home = h('div', null, [

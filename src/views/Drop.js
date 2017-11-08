@@ -1,4 +1,4 @@
-import { h } from 'hyperapp'
+import { h } from '../h'
 
 const Drop = (state, actions, data) => _ => children =>
   h('div', {

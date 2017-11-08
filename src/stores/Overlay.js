@@ -1,12 +1,10 @@
-const { addEventListener } = window
-
-const OverlayModule = {
+const Overlay = {
   state: {
     overlay: null
   },
   actions: {
     init (_, { reset }) {
-      addEventListener('click', e =>
+      window.addEventListener('click', e =>
         !e.target.classList.contains('_overlay') && reset())
     },
     reset: _ => ({
@@ -18,4 +16,4 @@ const OverlayModule = {
   }
 }
 
-export { OverlayModule }
+export { Overlay }
