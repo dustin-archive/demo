@@ -7,7 +7,7 @@ import * as views from './views'
 app({
   stores,
   views,
-  init (_, actions) {
+  init (state, actions) {
     actions.Overlay.init()
     actions.Router.init()
   }
