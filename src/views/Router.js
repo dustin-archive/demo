@@ -57,6 +57,6 @@ const Router = (state, actions, data) => ({
   '/profile': Profile,
   '/settings': Settings,
   '/update': Update
-})[state.RouterModule.path] || NotFound
+})[state.Router.path] || NotFound
 
 export { Router }

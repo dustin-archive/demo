@@ -7,12 +7,12 @@ const Drop = (state, actions, data) => children =>
     h('button', {
       onclick (e) {
         e.stopPropagation()
-        actions.OverlayModule.toggle(data)
+        actions.Overlay.toggle(data)
       }
     }, data),
     h('div', {
       class: 'drop-region',
-      style: state.OverlayModule.overlay !== data && {
+      style: state.Overlay.overlay !== data && {
         display: 'none'
       }
     }, children)
