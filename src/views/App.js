@@ -1,6 +1,6 @@
 import { h } from '../h'
 
-const App = ({ state, actions, views }) =>
+const App = (state, actions, views) =>
   h('div', null, [
     views.Search(),
     views.Nav(),

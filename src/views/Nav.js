@@ -4,7 +4,7 @@ const Link = (href, value) => h('li', null, [
   h('a', { href }, value)
 ])
 
-const Nav = (state, actions, data) => _ =>
+const Nav = (state, actions, data) =>
   h('ul', null, [
     Link('#', 'home'),
     Link('#/404', 'not found'),
