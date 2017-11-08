@@ -1,8 +1,11 @@
 import { h } from 'picodom'
 
-const App = (state, actions, views) =>
-  h('div', null, [
-    h('div', null, 'howdy')
+const App = (state, actions, views, data) => {
+  console.log(state, actions, views, data)
+  return h('div', null, [
+    h('div', null, 'howdy'),
+    h('br'),
+    views.Code(state)
     // views.Search(),
     // views.Nav(),
     // views.Router(),
@@ -19,8 +22,7 @@ const App = (state, actions, views) =>
     // views.Drop('qux')(
     //   h('div', null, 'qux')
     // ),
-    // h('br', null, null),
-    // views.Code(state)
   ])
+}
 
 export { App }
