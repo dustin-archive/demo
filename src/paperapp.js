@@ -22,7 +22,7 @@ export default ({ stores, views, init }) => {
     appViews[view] = data => views[view](appState, appActions, appViews, data)
   }
 
-  patch(document.body, appViews.App(appState, appActions, appViews))
+  patch(document.body, appViews.App())
 
   // init && init(appState, appActions)
   init(appState, appActions)
