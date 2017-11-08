@@ -16,6 +16,9 @@ const Router = {
     update (state) {
       const { hash } = window.location
       const index = hash.indexOf('?')
+
+      console.log(hash)
+
       return {
         query: decode(hash.slice(index)),
         path: hash.slice(1, index === -1 ? hash.length : index)
