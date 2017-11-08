@@ -1,4 +1,4 @@
-import { h } from '../h'
+import { h } from 'picodom'
 
 const Search = (state, actions, data) =>
   h('input', {

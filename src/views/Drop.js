@@ -1,4 +1,4 @@
-import { h } from '../h'
+import { h } from 'picodom'
 
 const Drop = (state, actions, data) => children =>
   h('div', {

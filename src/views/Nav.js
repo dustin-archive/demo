@@ -1,4 +1,4 @@
-import { h } from '../h'
+import { h } from 'picodom'
 
 const Link = (href, value) => h('li', null, [
   h('a', { href }, value)

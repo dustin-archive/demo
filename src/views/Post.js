@@ -1,4 +1,4 @@
-import { h } from '../h'
+import { h } from 'picodom'
 
 const Post = h('div', null, [
   h('div', null, 'post')

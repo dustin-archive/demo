@@ -1,4 +1,4 @@
-import { h, patch } from 'picodom'
+import { patch } from 'picodom'
 
 const { log } = console
 
