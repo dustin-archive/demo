@@ -23,26 +23,7 @@ export default ({ stores, views, init }) => {
     appViews[view] = data => views[view](appState, appActions, data)
   }
 
-  const node = h('div', null, [
-    h('div', null, JSON.stringify(appState)),
-    h('button', {
-      style: {
-        color: 'white',
-        background: 'dodgerblue'
-      },
-      onclick () {
-        appActions.Router.route({
-          path: '/howdy',
-          query: {
-            foo: 'bar',
-            baz: 'qux'
-          }
-        })
-      }
-    }, 'click me')
-  ])
-
-  patch(document.body, node)
+  patch(document.body, appViews.App(appState, appActions, appViews))
 
   // init && init(appState, appActions)
   init(appState, appActions)
@@ -50,3 +31,22 @@ export default ({ stores, views, init }) => {
   log('state', appState)
   log('actions', appActions)
 }
+
+// const node = h('div', null, [
+//   h('div', null, JSON.stringify(appState)),
+//   h('button', {
+//     style: {
+//       color: 'white',
+//       background: 'dodgerblue'
+//     },
+//     onclick () {
+//       appActions.Router.route({
+//         path: '/howdy',
+//         query: {
+//           foo: 'bar',
+//           baz: 'qux'
+//         }
+//       })
+//     }
+//   }, 'click me')
+// ])
