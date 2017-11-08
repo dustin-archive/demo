@@ -3,8 +3,6 @@ import { patch } from 'picodom'
 const { log } = console
 
 export default ({ stores, views, init }) => {
-  log(init)
-
   const appState = {}
   const appActions = {}
   const appViews = {}
@@ -13,14 +11,15 @@ export default ({ stores, views, init }) => {
     const { state, actions } = stores[store]
 
     appState[store] = state
+    const appActionsStore = appActions[store] = {}
 
     for (let action in actions) {
-      appActions[store] = data => actions[action](state, actions, data)
+      appActionsStore[action] = data => actions[action](state, actions, data)
     }
   }
 
   for (let view in views) {
-    appViews[view] = data => views[view](appState, appActions, data)
+    appViews[view] = data => views[view](appState, appActions, appViews, data)
   }
 
   patch(document.body, appViews.App(appState, appActions, appViews))
