@@ -1,4 +1,4 @@
-export { App } from './views/Code'
+export { App } from './views/App'
 export { Code } from './views/Code'
 export { Drop } from './views/Drop'
 export { Nav } from './views/Nav'
