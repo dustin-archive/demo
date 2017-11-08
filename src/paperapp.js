@@ -1,12 +1,52 @@
+import { h, patch } from 'picodom'
+
+const { log } = console
+
 export default ({ stores, views, init }) => {
-  const state = {}
-  const actions = {}
+  log(init)
+
+  const appState = {}
+  const appActions = {}
+  const appViews = {}
 
   for (let store in stores) {
-    const { state: s, actions: a } = store
-    state[s] = stores[s]
-    actions[a] = stores[a]
+    const { state, actions } = stores[store]
+
+    appState[store] = state
+
+    for (let action in actions) {
+      appActions[store] = data => actions[action](state, actions, data)
+    }
   }
 
-  init(state, actions)
+  for (let view in views) {
+    appViews[view] = data => views[view](appState, appActions, data)
+  }
+
+  const node = h('div', null, [
+    h('div', null, JSON.stringify(appState)),
+    h('button', {
+      style: {
+        color: 'white',
+        background: 'dodgerblue'
+      },
+      onclick () {
+        appActions.Router.route({
+          path: '/howdy',
+          query: {
+            foo: 'bar',
+            baz: 'qux'
+          }
+        })
+      }
+    }, 'click me')
+  ])
+
+  patch(document.body, node)
+
+  // init && init(appState, appActions)
+  init(appState, appActions)
+
+  log('state', appState)
+  log('actions', appActions)
 }
