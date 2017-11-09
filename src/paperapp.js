@@ -13,7 +13,10 @@ export default ({ stores, views, init }) => {
 
     for (let action in actions) {
       actionsStore[action] = data => {
-        const updates = actions[action](stateStore, actionsStore, data)
+        const updates = actions[action]({
+          state: stateStore,
+          actions: actionsStore
+        }, data)
 
         for (let update in updates) {
           appState[store][update] = updates[update]

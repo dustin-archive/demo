@@ -10,7 +10,7 @@ const Overlay = {
     reset: _ => ({
       overlay: null
     }),
-    toggle: ({ overlay }, _, data) => ({
+    toggle: ({ state: overlay }, data) => ({
       overlay: overlay === data ? null : data
     })
   }
