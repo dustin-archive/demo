@@ -1,6 +1,6 @@
 import { h } from 'picodom'
 
-const Search = (state, actions, data) =>
+const Search = (state, actions, views, data) =>
   h('input', {
     type: 'text',
     value: decodeURIComponent(state.Router.query.search),
