@@ -7,11 +7,11 @@ const Overlay = {
       window.addEventListener('click', e =>
         !e.target.classList.contains('_overlay') && actions.reset())
     },
-    reset: _ => ({
+    reset: () => ({
       overlay: null
     }),
-    toggle: ({ state: overlay }, data) => ({
-      overlay: overlay === data ? null : data
+    toggle: ({ state }, data) => ({
+      overlay: state.overlay === data ? null : data
     })
   }
 }

@@ -1,6 +1,6 @@
 import { h } from 'picodom'
 
-const App = ({ state, actions, views }, data) => {
+const App = ({ state, actions, views }) => {
   const { route } = actions.Router
   const { Code, Drop } = views
 
