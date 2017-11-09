@@ -1,50 +1,37 @@
 import { patch } from 'picodom'
 
-// const { log } = console
-
 export default ({ stores, views, init }) => {
-  let appState = {}
+  const appState = {}
   const appActions = {}
   const appViews = {}
-
-  // const set = state => {
-  //   Object.assign(appState, state)
-  //   patch(document.body, appViews.App())
-  // }
 
   for (let store in stores) {
     const { state, actions } = stores[store]
 
-    // const appStateStore = appState[store] = state
-    appState[store] = state
-    const appActionsStore = appActions[store] = {}
+    const stateStore = appState[store] = state
+    const actionsStore = appActions[store] = {}
 
     for (let action in actions) {
-      appActionsStore[action] = data => {
-        // console.log('i should only be called when an action is called')
+      actionsStore[action] = data => {
+        const updates = actions[action](stateStore, actionsStore, data)
 
-        console.log(appState.Router.path)
-
-        appState = Object.assign({}, appState, actions[action](state, actions, data))
-
-        console.log(appState.Router.path)
+        for (let update in updates) {
+          appState[store][update] = updates[update]
+        }
 
         patch(document.body, appViews.App())
 
-        // return actions[action](state, actions, data)
+        console.log(appState.Router.path)
       }
     }
   }
 
   for (let view in views) {
-    appViews[view] = data => views[view](appState, appActions, appViews, data)
+    appViews[view] = data =>
+      views[view](appState, appActions, appViews, data)
   }
 
   patch(document.body, appViews.App())
 
-  // init && init(appState, appActions)
-  init(appState, appActions)
-
-  // log('state', appState)
-  // log('actions', appActions)
+  init && init(appState, appActions)
 }
