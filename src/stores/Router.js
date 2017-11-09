@@ -6,10 +6,10 @@ const Router = {
     path: '/'
   },
   actions: {
-    init (_, { update }) {
+    init ({ actions }) {
       console.log('i am initializing!')
-      update()
-      window.addEventListener('hashchange', _ => update())
+      actions.update()
+      window.addEventListener('hashchange', _ => actions.update())
     },
     route ({ state }, { path, query }) {
       console.log('i am routing!')

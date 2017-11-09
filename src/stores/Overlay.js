@@ -3,9 +3,9 @@ const Overlay = {
     overlay: null
   },
   actions: {
-    init (_, { reset }) {
+    init ({ actions }) {
       window.addEventListener('click', e =>
-        !e.target.classList.contains('_overlay') && reset())
+        !e.target.classList.contains('_overlay') && actions.reset())
     },
     reset: _ => ({
       overlay: null
