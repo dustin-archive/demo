@@ -6,9 +6,9 @@ const Router = {
     path: '/'
   },
   actions: {
-    init ({ actions: { update } }) {
-      update()
-      window.addEventListener('hashchange', _ => update())
+    init ({ actions }) {
+      actions.update()
+      window.addEventListener('hashchange', _ => actions.update())
     },
     route ({ state }, { path, query }) {
       window.location.hash = (path || state.path) + encode(query || state.query)
