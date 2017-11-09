@@ -7,14 +7,16 @@ const Router = {
   },
   actions: {
     init (_, { update }) {
+      console.log('i am initializing!')
       update()
       window.addEventListener('hashchange', _ => update())
     },
     route (state, _, { path, query }) {
+      console.log('i am routing!')
       window.location.hash = (path || state.path) + encode(query || state.query)
     },
-    update (state) {
-      console.log('i am being updated!')
+    update (state, actions, data) {
+      console.log('i am updating!')
       const { hash } = window.location
       const index = hash.indexOf('?')
       return {
