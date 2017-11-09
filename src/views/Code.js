@@ -4,7 +4,7 @@ const style = {
   whiteSpace: 'pre'
 }
 
-const Code = (state, actions, data) =>
+const Code = (state, actions, views, data) =>
   h('div', { style }, JSON.stringify(data, null, '  '))
 
 export { Code }

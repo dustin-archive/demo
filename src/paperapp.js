@@ -20,15 +20,12 @@ export default ({ stores, views, init }) => {
         }
 
         patch(document.body, appViews.App())
-
-        console.log(appState.Router.path)
       }
     }
   }
 
   for (let view in views) {
-    appViews[view] = data =>
-      views[view](appState, appActions, appViews, data)
+    appViews[view] = data => views[view](appState, appActions, appViews, data)
   }
 
   patch(document.body, appViews.App())
