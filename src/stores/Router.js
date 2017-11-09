@@ -14,6 +14,7 @@ const Router = {
       window.location.hash = (path || state.path) + encode(query || state.query)
     },
     update (state) {
+      console.log('i am being updated!')
       const { hash } = window.location
       const index = hash.indexOf('?')
       return {
