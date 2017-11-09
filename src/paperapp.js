@@ -25,7 +25,11 @@ export default ({ stores, views, init }) => {
   }
 
   for (let view in views) {
-    appViews[view] = data => views[view](appState, appActions, appViews, data)
+    appViews[view] = data => views[view]({
+      state: appState,
+      actions: appActions,
+      views: appViews
+    }, data)
   }
 
   patch(document.body, appViews.App())
