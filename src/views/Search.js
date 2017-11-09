@@ -5,13 +5,11 @@ const Search = ({ state, actions }, data) =>
     type: 'text',
     value: decodeURIComponent(state.Router.query.search),
     onkeypress (e) {
-      if (e.keyCode === 13) {
-        actions.Router.route({
-          query: {
-            search: encodeURIComponent(e.target.value)
-          }
-        })
-      }
+      e.keyCode === 13 && actions.Router.route({
+        query: {
+          search: encodeURIComponent(e.target.value)
+        }
+      })
     }
   })
 
