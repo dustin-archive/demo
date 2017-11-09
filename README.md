@@ -1,9 +1,17 @@
 # Demo
 
-[hyperapp](https://hyperapp.js.org/)
-
 ## Install
+
+```
+npm i
+```
 
 ## Develop
 
+```
+make
+```
+
 ## Scripts
+
+See `Makefile` for details.
