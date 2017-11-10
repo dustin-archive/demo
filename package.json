@@ -16,7 +16,7 @@
   "dependencies": {
     "@whaaaley/query-string": "^0.2.0",
     "classcat": "^1.0.1",
-    "hyperapp": "^0.15.1",
+    "hyperapp": "^0.16.0",
     "hyperapp-persist": "^3.1.0"
   },
   "devDependencies": {

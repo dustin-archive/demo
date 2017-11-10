@@ -1,6 +1,6 @@
 import { h } from 'hyperapp'
 
-const Search = (state, actions, data) => _ =>
+const Search = (state, actions) => data =>
   h('input', {
     type: 'text',
     value: decodeURIComponent(state.RouterModule.query.search),

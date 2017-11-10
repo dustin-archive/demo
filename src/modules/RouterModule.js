@@ -1,21 +1,20 @@
 import { encode, decode } from '@whaaaley/query-string'
 
-const { addEventListener } = window
-
 const RouterModule = {
   state: {
     query: {},
     path: '/'
   },
   actions: {
-    init (_, { update }) {
+    init: (s, actions) => {
+      const update = actions.update
       update()
-      addEventListener('hashchange', _ => update())
+      window.addEventListener('hashchange', _ => update())
     },
-    route (state, _, { path, query }) {
-      window.location.hash = (path || state.path) + encode(query || state.query)
+    route: state => data => {
+      window.location.hash = (data.path || state.path) + encode(data.query || state.query)
     },
-    update (state) {
+    update: state => {
       const { hash } = window.location
       const index = hash.indexOf('?')
       return {

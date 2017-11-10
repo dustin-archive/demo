@@ -2,6 +2,7 @@
 
 import { h, app } from 'hyperapp'
 
+import { Cake } from './modules/Cake'
 import { OverlayModule } from './modules/OverlayModule'
 import { RouterModule } from './modules/RouterModule'
 
@@ -12,11 +13,15 @@ import { Router } from './views/Router'
 import { Search } from './views/Search'
 
 const hyperapp = app({
-  modules: {
-    OverlayModule,
-    RouterModule
+  state: {
+    Cake: Cake.state,
+    OverlayModule: OverlayModule.state,
+    RouterModule: RouterModule.state
   },
   actions: {
+    Cake: Cake.actions,
+    OverlayModule: OverlayModule.actions,
+    RouterModule: RouterModule.actions,
     Code,
     Drop,
     Nav,
@@ -25,24 +30,40 @@ const hyperapp = app({
   },
   view: (state, actions) =>
     h('div', null, [
-      actions.Search(),
-      actions.Nav(),
-      actions.Router(),
-      h('br', null, null),
-      actions.Drop('foo')(
-        h('div', null, 'foo')
-      ),
-      actions.Drop('bar')(
-        h('div', null, 'bar')
-      ),
-      actions.Drop('baz')(
-        h('div', null, 'baz')
-      ),
-      actions.Drop('qux')(
-        h('div', null, 'qux')
-      ),
-      h('br', null, null),
-      actions.Code(state)
+      h('button', {
+        onclick () {
+          actions.Cake.add({
+            loading: true
+          })
+        }
+      }, 'loading is true'),
+      h('br'),
+      h('br'),
+      h('button', {
+        onclick () {
+          actions.Cake.add({
+            loading: false
+          })
+        }
+      }, 'loading is false')
+      // h('br'),
+      // actions.Nav(),
+      // actions.Router(),
+      // h('br'),
+      // actions.Drop('foo')(
+      //   h('div', null, 'foo')
+      // ),
+      // actions.Drop('bar')(
+      //   h('div', null, 'bar')
+      // ),
+      // actions.Drop('baz')(
+      //   h('div', null, 'baz')
+      // ),
+      // actions.Drop('qux')(
+      //   h('div', null, 'qux')
+      // ),
+      // h('br'),
+      // actions.Code(state)
     ])
 })
 

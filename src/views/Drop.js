@@ -1,6 +1,6 @@
 import { h } from 'hyperapp'
 
-const Drop = (state, actions, data) => _ => children =>
+const Drop = (state, actions) => data => children =>
   h('div', {
     class: 'drop _overlay'
   }, [
