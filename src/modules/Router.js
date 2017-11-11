@@ -1,6 +1,6 @@
 import { encode, decode } from '@whaaaley/query-string'
 
-const RouterModule = {
+const Router = {
   state: {
     query: {},
     path: '/'
@@ -25,4 +25,4 @@ const RouterModule = {
   }
 }
 
-export { RouterModule }
+export { Router }

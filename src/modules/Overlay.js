@@ -1,4 +1,4 @@
-const OverlayModule = {
+const Overlay = {
   state: {
     overlay: null
   },
@@ -17,4 +17,4 @@ const OverlayModule = {
   }
 }
 
-export { OverlayModule }
+export { Overlay }

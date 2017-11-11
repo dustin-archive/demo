@@ -3,15 +3,13 @@ import { h } from 'hyperapp'
 const Search = (state, actions) => data =>
   h('input', {
     type: 'text',
-    value: decodeURIComponent(state.RouterModule.query.search),
+    value: decodeURIComponent(state.Router.query.search),
     onkeypress (e) {
-      if (e.keyCode === 13) {
-        actions.RouterModule.route({
-          query: {
-            search: encodeURIComponent(e.target.value)
-          }
-        })
-      }
+      e.keyCode === 13 && actions.Router.route({
+        query: {
+          search: encodeURIComponent(e.target.value)
+        }
+      })
     }
   })
 

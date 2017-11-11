@@ -3,30 +3,25 @@
 import { h, app } from 'hyperapp'
 
 import { Cake } from './modules/Cake'
-import { OverlayModule } from './modules/OverlayModule'
-import { RouterModule } from './modules/RouterModule'
+import { Overlay } from './modules/Overlay'
+import { Router } from './modules/Router'
 
 import { Code } from './views/Code'
 import { Drop } from './views/Drop'
 import { Nav } from './views/Nav'
-import { Router } from './views/Router'
-import { Search } from './views/Search'
+import { RouterView } from './views/RouterView'
+// import { Search } from './views/Search'
 
 const hyperapp = app({
   state: {
     Cake: Cake.state,
-    OverlayModule: OverlayModule.state,
-    RouterModule: RouterModule.state
+    Overlay: Overlay.state,
+    Router: Router.state
   },
   actions: {
     Cake: Cake.actions,
-    OverlayModule: OverlayModule.actions,
-    RouterModule: RouterModule.actions,
-    Code,
-    Drop,
-    Nav,
-    Router,
-    Search
+    Overlay: Overlay.actions,
+    Router: Router.actions
   },
   view: (state, actions) =>
     h('div', null, [
@@ -38,34 +33,52 @@ const hyperapp = app({
         }
       }, 'loading is true'),
       h('br'),
-      h('br'),
       h('button', {
         onclick () {
           actions.Cake.add({
             loading: false
           })
         }
-      }, 'loading is false')
-      // h('br'),
-      // actions.Nav(),
-      // actions.Router(),
-      // h('br'),
-      // actions.Drop('foo')(
-      //   h('div', null, 'foo')
-      // ),
-      // actions.Drop('bar')(
-      //   h('div', null, 'bar')
-      // ),
-      // actions.Drop('baz')(
-      //   h('div', null, 'baz')
-      // ),
-      // actions.Drop('qux')(
-      //   h('div', null, 'qux')
-      // ),
-      // h('br'),
-      // actions.Code(state)
+      }, 'loading is false'),
+      h('br'),
+      Nav(),
+      RouterView({
+        path: state.Router.path
+      }),
+      h('br'),
+      Drop({
+        name: 'foo',
+        overlay: state.Overlay.overlay,
+        toggle: actions.Overlay.toggle
+      }, [
+        h('div', null, 'foo')
+      ]),
+      Drop({
+        name: 'bar',
+        overlay: state.Overlay.overlay,
+        toggle: actions.Overlay.toggle
+      }, [
+        h('div', null, 'bar')
+      ]),
+      Drop({
+        name: 'baz',
+        overlay: state.Overlay.overlay,
+        toggle: actions.Overlay.toggle
+      }, [
+        h('div', null, 'baz')
+      ]),
+      Drop({
+        name: 'qux',
+        overlay: state.Overlay.overlay,
+        toggle: actions.Overlay.toggle
+      }, [
+        h('div', null, 'qux')
+      ]),
+      Code({
+        state
+      })
     ])
 })
 
-hyperapp.OverlayModule.init()
-hyperapp.RouterModule.init()
+hyperapp.Overlay.init()
+hyperapp.Router.init()

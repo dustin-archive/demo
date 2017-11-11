@@ -1,9 +1,10 @@
 import { h } from 'hyperapp'
 
-const style = {
-  whiteSpace: 'pre'
-}
-
-const Code = s => data => h('div', { style }, JSON.stringify(data, null, '  '))
+const Code = data =>
+  h('div', {
+    style: {
+      whiteSpace: 'pre'
+    }
+  }, JSON.stringify(data.state, null, '  '))
 
 export { Code }

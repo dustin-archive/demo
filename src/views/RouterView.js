@@ -45,7 +45,7 @@ const NotFound = h('div', null, [
   h('div', null, '404')
 ])
 
-const Router = state => data => ({
+const RouterView = data => ({
   '': Home,
   '/about': About,
   '/catalog': Catalog,
@@ -57,6 +57,6 @@ const Router = state => data => ({
   '/profile': Profile,
   '/settings': Settings,
   '/update': Update
-})[state.RouterModule.path] || NotFound
+})[data.path] || NotFound
 
-export { Router }
+export { RouterView }
