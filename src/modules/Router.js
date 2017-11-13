@@ -14,7 +14,7 @@ const Router = {
     route: state => data => {
       window.location.hash = (data.path || state.path) + encode(data.query || state.query)
     },
-    update: state => {
+    update: s => {
       const { hash } = window.location
       const index = hash.indexOf('?')
       return {
