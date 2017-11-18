@@ -37,8 +37,5 @@ export default ({ stores, views, init }) => {
 
   patch(document.body, appViews.App())
 
-  init && init({
-    state: appState,
-    actions: appActions
-  })
+  return appActions
 }

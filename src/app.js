@@ -4,11 +4,10 @@ import app from './paperapp'
 import * as stores from './stores'
 import * as views from './views'
 
-app({
+const actions = app({
   stores,
-  views,
-  init ({ actions }) {
-    actions.Overlay.init()
-    actions.Router.init()
-  }
+  views
 })
+
+actions.Overlay.init()
+actions.Router.init()
