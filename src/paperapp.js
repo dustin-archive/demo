@@ -1,6 +1,5 @@
-import { patch } from 'picodom'
 
-export default ({ stores, views, init }) => {
+export default ({ stores, views, render }) => {
   const appState = {}
   const appActions = {}
   const appViews = {}
@@ -22,7 +21,7 @@ export default ({ stores, views, init }) => {
           appState[store][update] = updates[update]
         }
 
-        patch(document.body, appViews.App())
+        render(appViews)
       }
     }
   }
@@ -35,7 +34,7 @@ export default ({ stores, views, init }) => {
     }, data)
   }
 
-  patch(document.body, appViews.App())
+  render(appViews)
 
   return appActions
 }
