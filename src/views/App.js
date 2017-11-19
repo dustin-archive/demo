@@ -1,6 +1,6 @@
 import { h } from 'picodom'
 
-const App = ({ state, actions, views }) =>
+const App = (state, actions, views, d) =>
   h('div', null, [
     h('h1', null, 'Router:'),
     h('button', {

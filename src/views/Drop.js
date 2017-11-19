@@ -1,6 +1,6 @@
 import { h } from 'picodom'
 
-const Drop = ({ state, actions, views }, data) => children =>
+const Drop = (state, actions, v, data) => children =>
   h('div', {
     class: 'drop _overlay'
   }, [

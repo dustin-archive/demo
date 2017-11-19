@@ -1,6 +1,6 @@
 import { h } from 'picodom'
 
-const Code = (_, data) =>
+const Code = (s, a, v, data) =>
   h('div', {
     style: {
       whiteSpace: 'pre'

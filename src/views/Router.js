@@ -45,7 +45,7 @@ const NotFound = h('div', null, [
   h('div', null, '404')
 ])
 
-const Router = ({ state }) => ({
+const Router = (state, a, v, d) => ({
   '': Home,
   '/about': About,
   '/catalog': Catalog,

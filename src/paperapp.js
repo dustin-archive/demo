@@ -1,24 +1,20 @@
 
-export default ({ stores, views, render }) => {
+export default ({ actions: scopes, views, render }) => {
   const appState = {}
   const appActions = {}
   const appViews = {}
 
-  for (let store in stores) {
-    const { state, actions } = stores[store]
+  for (let name in scopes) {
+    const state = appState[name] = {}
+    const actions = appActions[name] = {}
+    const scope = scopes[name]
 
-    const stateStore = appState[store] = state
-    const actionsStore = appActions[store] = {}
-
-    for (let action in actions) {
-      actionsStore[action] = data => {
-        const updates = actions[action]({
-          state: stateStore,
-          actions: actionsStore
-        }, data)
+    for (let action in scope) {
+      actions[action] = data => {
+        const updates = scope[action](state, actions, data)
 
         for (let update in updates) {
-          appState[store][update] = updates[update]
+          appState[name][update] = updates[update]
         }
 
         render(appViews)
@@ -27,11 +23,7 @@ export default ({ stores, views, render }) => {
   }
 
   for (let view in views) {
-    appViews[view] = data => views[view]({
-      state: appState,
-      actions: appActions,
-      views: appViews
-    }, data)
+    appViews[view] = data => views[view](appState, appActions, appViews, data)
   }
 
   render(appViews)

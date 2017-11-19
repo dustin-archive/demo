@@ -4,16 +4,21 @@
 import { patch } from 'picodom'
 
 import app from './paperapp'
-import * as stores from './stores'
+import * as actions from './actions'
 import * as views from './views'
 
-const actions = app({
-  stores,
+let old
+
+const appActions = app({
+  actions,
   views,
   render (views) {
-    patch(document.body, views.App())
+    const node = views.App()
+    // patch(document.body, old, node)
+    patch(document.body, node)
+    old = node
   }
 })
 
-actions.Overlay.init()
-actions.Router.init()
+appActions.Overlay.init()
+appActions.Router.init()
