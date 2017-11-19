@@ -1,32 +1,32 @@
+export default function (app) {
+  var state = {}
+  var stores = {}
+  var views = {}
 
-export default ({ actions: scopes, views, render }) => {
-  const appState = {}
-  const appActions = {}
-  const appViews = {}
+  for (var store in app.stores) {
+    var local = state[store] = {}
+    var actions = app.stores[store]
 
-  for (let name in scopes) {
-    const state = appState[name] = {}
-    const actions = appActions[name] = {}
-    const scope = scopes[name]
-
-    for (let action in scope) {
-      actions[action] = data => {
-        const updates = scope[action](state, actions, data)
+    for (var action in actions) {
+      app.stores[store][action] = function (data) {
+        var updates = app.stores[store][action](local, actions, data)
 
         for (let update in updates) {
-          appState[name][update] = updates[update]
+          state[store][update] = updates[update]
         }
 
-        render(appViews)
+        app.render(views)
       }
     }
   }
 
-  for (let view in views) {
-    appViews[view] = data => views[view](appState, appActions, appViews, data)
+  for (var view in app.views) {
+    views[view] = function (data) {
+      app.views[view](state, stores, views, data)
+    }
   }
 
-  render(appViews)
+  app.render(views)
 
-  return appActions
+  return actions
 }
