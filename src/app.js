@@ -10,7 +10,6 @@ import { Code } from './views/Code'
 import { Drop } from './views/Drop'
 import { Nav } from './views/Nav'
 import { RouterView } from './views/RouterView'
-// import { Search } from './views/Search'
 
 const hyperapp = app({
   state: {
@@ -80,5 +79,12 @@ const hyperapp = app({
     ])
 })
 
-hyperapp.Overlay.init()
 hyperapp.Router.init()
+
+window.addEventListener('click', e => {
+  hyperapp.Overlay.blur(e)
+})
+
+window.addEventListener('hashchange', e => {
+  hyperapp.Router.init()
+})

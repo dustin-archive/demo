@@ -1,9 +1,7 @@
 var Cake = {
   state: {},
   actions: {
-    add: s => data => {
-      return data
-    }
+    add: s => data => data
   }
 }
 
