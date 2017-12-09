@@ -7,9 +7,7 @@ SHELL := /bin/bash
 .SILENT:
 
 start: fresh
-	reload-server start &
-	watch-exec 'src/**/*.js' 'make js', 'src/**/*.scss' 'make css' | reload-server &
-	wait
+	watch-exec 'src/**/*.js' 'make js', 'src/**/*.scss' 'make css' | reload-server
 
 build: fresh
 	babel dist/app.js | uglifyjs -o dist/app.js -c -m --source-map "url='app.js.map',content='dist/app.js.map'" &

@@ -1,19 +1,19 @@
 
 import { patch } from 'picodom'
+import app from '@whaaaley/paperapp'
 
-import app from './paperapp'
-
-import * as stores from './stores'
+import * as store from './store'
 import * as views from './views'
 
-// let node
+let node
 
-const render = views => {
-  // patch(document.body, node, (node = views.App()))
-  patch(document.body, views.App())
-}
-
-const paper = app({ stores, views, render })
+const paper = app({
+  store,
+  views,
+  render (views) {
+    patch(node, (node = views.App()))
+  }
+})
 
 paper.Overlay.init()
 paper.Router.init()
